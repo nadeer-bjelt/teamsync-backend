@@ -12,4 +12,13 @@ const createDepartment = {
   }),
 };
 
-module.exports = { createDepartment };
+const getDepartmentById = {
+  body: Joi.object().keys({
+    departmentId: Joi.string().custom(objectId),
+  }),
+};
+
+module.exports = {
+  createDepartment,
+  getDepartmentById,
+};

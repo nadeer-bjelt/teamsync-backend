@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment);
 
+router.route('/:departmentId').get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById);
+
 module.exports = router;
 
 /**
@@ -67,4 +69,37 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ */
+
+/**
+ * @swagger
+ * /departments/{id}:
+ *
+ *   get:
+ *     summary: Get a department
+ *     description: showing a particular department.
+ *     tags: [Departments]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Department id
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Department'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
  */

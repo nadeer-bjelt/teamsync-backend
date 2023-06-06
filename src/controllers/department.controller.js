@@ -9,4 +9,15 @@ const createDepartment = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(department);
 });
 
-module.exports = { createDepartment };
+const getDepartmentById = catchAsync(async (req, res) => {
+  const department = await departmentService.getDepartmentById(req.params.departmentId);
+  if (!department) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Department not found');
+  }
+  res.send(department);
+});
+
+module.exports = {
+  createDepartment,
+  getDepartmentById,
+};

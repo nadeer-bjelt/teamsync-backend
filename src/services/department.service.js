@@ -12,4 +12,16 @@ const createDepartment = async (departmentBody) => {
   return Department.create(departmentBody);
 };
 
-module.exports = { createDepartment };
+/**
+ *Get department by ID
+ @param {string} id
+ @returns {Promise<Department>}
+ */
+const getDepartmentById = async (id) => {
+  return Department.findById(id);
+};
+
+module.exports = {
+  createDepartment,
+  getDepartmentById,
+};
