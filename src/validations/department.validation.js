@@ -12,4 +12,10 @@ const createDepartment = {
   }),
 };
 
-module.exports = { createDepartment };
+
+const deleteDepartment={
+  params:Joi.object().keys({
+    departmentId:Joi.string().custom(objectId)
+  })
+}
+module.exports = { createDepartment,deleteDepartment };

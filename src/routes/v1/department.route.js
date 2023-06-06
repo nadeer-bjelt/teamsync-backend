@@ -7,7 +7,7 @@ const departmentController = require('../../controllers/department.controller');
 const router = express.Router();
 
 router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment);
-
+router.route('/:departmentId').delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment)
 module.exports = router;
 
 /**
@@ -67,4 +67,33 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
+ * 
+ * 
+ *  
+ */
+/**
+ * @swagger
+ * /departments/{id}:
+ *  delete:
+ *     summary:Delete a Department
+ *     description:dhwijdjb
+ *     tags:[Departments]
+ *     security:
+ *       - bearerAuth:[]
+ *     parameters:
+ *       - in: path
+ *         name:id 
+ *         required:true
+ *         schema:
+ *           type:string
+ *         description:department id
+ *     responses:
+ *       "200":
+ *        description:No content
+ *       "401":
+ *          $ref:'#/component/responses/Unauthorized'
+ *       "403":
+ *          $ref:#/components/responses/Forbidden'
+ *       "404":
+ *          $ref:'#/components/responses/NotFound
  */

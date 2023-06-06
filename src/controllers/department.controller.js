@@ -9,4 +9,9 @@ const createDepartment = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(department);
 });
 
-module.exports = { createDepartment };
+const deleteDepartment = catchAsync(async (req, res) => {
+  await departmentService.deleteDepartmentById(req.params.departmentId)
+  res.status(httpStatus.NO_CONTENT).send();
+})
+
+module.exports = { createDepartment, deleteDepartment };
