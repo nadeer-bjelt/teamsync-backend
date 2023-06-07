@@ -34,9 +34,19 @@ const updateDepartment = {
   }),
 };
 
+const getDepartments = {
+  query: Joi.object().keys({
+    name: Joi.string(),
+    description: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+};
 module.exports = {
   createDepartment,
   getDepartmentById,
   deleteDepartment,
   updateDepartment,
+  getDepartments,
 };

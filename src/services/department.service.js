@@ -17,7 +17,6 @@ const createDepartment = async (departmentBody) => {
  * @param {Object} departmentId
  * @returns {Promise<User>}
  */
-
 const deleteDepartmentById = async (departmentId) => {
   //   department=await getDepartmentById( departmentId)
   // if(!department){
@@ -52,9 +51,24 @@ const updateDepartment = async (departmentId, updateBody) => {
   return department;
 };
 
+/**
+ * get departments
+ * @param {Object} filter
+ * @param {Object} options
+ * @param {string} [options.sortBy]
+ * @param {number} [options.limit]
+ * @param {number} [option.page]
+ * @returns {Promise<QueryResult>}
+ */
+const queryDepartments = async (filter, options) => {
+  const departments = await Department.paginate(filter, options);
+  return departments;
+};
+
 module.exports = {
   createDepartment,
   getDepartmentById,
   deleteDepartmentById,
   updateDepartment,
+  queryDepartments,
 };

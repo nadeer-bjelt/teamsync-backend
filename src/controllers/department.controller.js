@@ -27,9 +27,16 @@ const UpdateDepartment = catchAsync(async (req, res) => {
   res.send(department);
 });
 
+const getDepartments = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['name']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await departmentService.queryDepartments(filter, options);
+  res.send(result);
+});
 module.exports = {
   createDepartment,
   getDepartmentById,
   deleteDepartment,
   UpdateDepartment,
+  getDepartments,
 };

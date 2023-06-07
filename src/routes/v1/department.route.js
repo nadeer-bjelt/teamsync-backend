@@ -10,8 +10,7 @@ router.route('/').post(validate(departmentValidation.createDepartment), departme
 router
   .route('/:departmentId')
   .get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
-  .delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment)
-  .patch(validate(departmentValidation.updateDepartment), departmentController.UpdateDepartment);
+  .delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment);
 
 module.exports = router;
 
@@ -80,37 +79,10 @@ module.exports = router;
 /**
  * @swagger
  * /departments/{id}:
+
  *   get:
  *     summary: Get a department
  *     description: showing a particular department.
- *     tags: [Departments]
- *     security:
- *       - bearerAuth: []
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: Department id
- *     responses:
- *       "200":
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/Department'
- *       "401":
- *         $ref: '#/components/responses/Unauthorized'
- *       "403":
- *         $ref: '#/components/responses/Forbidden'
- *       "404":
- *         $ref: '#/components/responses/NotFound'
- * 
- * delete:
-
- *     summary: Delete a department
- *     description: Delete a  department by its id.
  *     tags: [Departments]
  *     security:
  *       - bearerAuth: []
@@ -131,48 +103,27 @@ module.exports = router;
  *       "404":
  *         $ref: '#/components/responses/NotFound'
  *
- * patch:
- *     summary: Update a department
- *     description: updating a particular department ID.
+ * 
+ *   delete:
+ *     summary: Delete a Department
+ *     description: dhwijdjb
  *     tags: [Departments]
  *     security:
- *       - bearerAuth: []
+ *       - bearerAuth:[]
  *     parameters:
  *       - in: path
- *         name: id
+ *         name: id 
  *         required: true
  *         schema:
  *           type: string
  *         description: Department id
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *               description:
- *                 type: string
- *
- *             example:
- *               name: fake name
- *               description: fake description
  *     responses:
  *       "200":
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/Department'
- *       "400":
- *         $ref: '#/components/responses/DuplicateEmail'
+ *        description:No content
  *       "401":
- *         $ref: '#/components/responses/Unauthorized'
+ *          $ref:'#/component/responses/Unauthorized'
  *       "403":
- *         $ref: '#/components/responses/Forbidden'
+ *          $ref:#/components/responses/Forbidden'
  *       "404":
- *         $ref: '#/components/responses/NotFound'
- *
+ *          $ref:'#/components/responses/NotFound
  */
