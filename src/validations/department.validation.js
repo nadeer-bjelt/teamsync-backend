@@ -18,4 +18,15 @@ const deleteDepartment={
     departmentId:Joi.string().custom(objectId)
   })
 }
-module.exports = { createDepartment,deleteDepartment };
+
+const getDepartmentById = {
+  body: Joi.object().keys({
+    departmentId: Joi.string().custom(objectId),
+  }),
+};
+
+module.exports = {
+  createDepartment,
+  getDepartmentById,
+  deleteDepartment
+};

@@ -14,4 +14,17 @@ const deleteDepartment = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 })
 
-module.exports = { createDepartment, deleteDepartment };
+
+const getDepartmentById = catchAsync(async (req, res) => {
+  const department = await departmentService.getDepartmentById(req.params.departmentId);
+  if (!department) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Department not found');
+  }
+  res.send(department);
+});
+
+module.exports = {
+  createDepartment,
+  getDepartmentById,
+  deleteDepartment
+};
