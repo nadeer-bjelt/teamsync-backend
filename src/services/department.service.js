@@ -2,7 +2,6 @@ const httpStatus = require('http-status');
 const { Department } = require('../models');
 const ApiError = require('../utils/ApiError');
 
-
 /**
  * Create a new department
  * @param {Object} departmentBody
@@ -25,20 +24,37 @@ const deleteDepartmentById = async (departmentId) => {
   //   throw new ApiError(httpStatus.NOT_FOUND,' not found');
   // }
 
-  return Department.findByIdAndDelete(departmentId);;
-}
+  return Department.findByIdAndDelete(departmentId);
+};
 
 /**
  Get department by ID
- @param {string} id
+ @param {ObjectId} departmentId
  @returns {Promise<Department>}
  */
-const getDepartmentById = async (id) => {
-  return Department.findById(id);
+const getDepartmentById = async (departmentId) => {
+  return Department.findById(departmentId);
+};
+
+/**
+ * Update a particular department
+ * @param {ObjectId} departmentId
+ * @param {Object} updateBody
+ * @returns {Promise<Department>}
+ */
+const updateDepartment = async (departmentId, updateBody) => {
+  const department = await getDepartmentById(departmentId);
+  if (!department) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Department not Found');
+  }
+  Object.assign(department, updateBody);
+  await department.save();
+  return department;
 };
 
 module.exports = {
   createDepartment,
   getDepartmentById,
-  deleteDepartmentById
+  deleteDepartmentById,
+  updateDepartment,
 };

@@ -10,10 +10,9 @@ const createDepartment = catchAsync(async (req, res) => {
 });
 
 const deleteDepartment = catchAsync(async (req, res) => {
-  await departmentService.deleteDepartmentById(req.params.departmentId)
+  await departmentService.deleteDepartmentById(req.params.departmentId);
   res.status(httpStatus.NO_CONTENT).send();
-})
-
+});
 
 const getDepartmentById = catchAsync(async (req, res) => {
   const department = await departmentService.getDepartmentById(req.params.departmentId);
@@ -23,8 +22,14 @@ const getDepartmentById = catchAsync(async (req, res) => {
   res.send(department);
 });
 
+const UpdateDepartment = catchAsync(async (req, res) => {
+  const department = await departmentService.updateDepartment(req.params.departmentId, req.body);
+  res.send(department);
+});
+
 module.exports = {
   createDepartment,
   getDepartmentById,
-  deleteDepartment
+  deleteDepartment,
+  UpdateDepartment,
 };

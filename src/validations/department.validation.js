@@ -12,21 +12,31 @@ const createDepartment = {
   }),
 };
 
-
-const deleteDepartment={
-  params:Joi.object().keys({
-    departmentId:Joi.string().custom(objectId)
-  })
-}
+const deleteDepartment = {
+  params: Joi.object().keys({
+    departmentId: Joi.string().custom(objectId),
+  }),
+};
 
 const getDepartmentById = {
-  body: Joi.object().keys({
+  params: Joi.object().keys({
     departmentId: Joi.string().custom(objectId),
+  }),
+};
+
+const updateDepartment = {
+  params: Joi.object().keys({
+    departmentId: Joi.string().custom(objectId),
+  }),
+  body: Joi.object().keys({
+    name: Joi.string(),
+    description: Joi.string(),
   }),
 };
 
 module.exports = {
   createDepartment,
   getDepartmentById,
-  deleteDepartment
+  deleteDepartment,
+  updateDepartment,
 };

@@ -7,9 +7,11 @@ const departmentController = require('../../controllers/department.controller');
 const router = express.Router();
 
 router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment);
-router.route('/:departmentId')
-.get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
-.delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment);
+router
+  .route('/:departmentId')
+  .get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
+  .delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment)
+  .patch(validate(departmentValidation.updateDepartment), departmentController.UpdateDepartment);
 
 module.exports = router;
 
@@ -70,16 +72,14 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
- * 
- * 
- *  
+ *
+ *
+ *
  */
-
 
 /**
  * @swagger
  * /departments/{id}:
-
  *   get:
  *     summary: Get a department
  *     description: showing a particular department.
@@ -106,28 +106,73 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *
  * 
- *   delete:
- *     summary:Delete a Department
- *     description:dhwijdjb
- *     tags:[Departments]
+ * delete:
+
+ *     summary: Delete a department
+ *     description: Delete a  department by its id.
+ *     tags: [Departments]
  *     security:
- *       - bearerAuth:[]
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
- *         name:id 
- *         required:true
+ *         name: id
+ *         required: true
  *         schema:
- *           type:string
- *         description:Department id
+ *           type: string
+ *         description: Department id
  *     responses:
  *       "200":
- *        description:No content
+ *         description: No content
  *       "401":
- *          $ref:'#/component/responses/Unauthorized'
+ *         $ref: '#/components/responses/Unauthorized'
  *       "403":
- *          $ref:#/components/responses/Forbidden'
+ *         $ref: '#/components/responses/Forbidden'
  *       "404":
- *          $ref:'#/components/responses/NotFound
+ *         $ref: '#/components/responses/NotFound'
+ *
+ * patch:
+ *     summary: Update a department
+ *     description: updating a particular department ID.
+ *     tags: [Departments]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Department id
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *
+ *             example:
+ *               name: fake name
+ *               description: fake description
+ *     responses:
+ *       "200":
+ *         description: OK
+ *         content:
+ *           application/json:
+ *             schema:
+ *                $ref: '#/components/schemas/Department'
+ *       "400":
+ *         $ref: '#/components/responses/DuplicateEmail'
+ *       "401":
+ *         $ref: '#/components/responses/Unauthorized'
+ *       "403":
+ *         $ref: '#/components/responses/Forbidden'
+ *       "404":
+ *         $ref: '#/components/responses/NotFound'
+ *
  */
