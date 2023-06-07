@@ -6,7 +6,9 @@ const departmentController = require('../../controllers/department.controller');
 
 const router = express.Router();
 
-router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment);
+router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment)
+.get(validate(departmentValidation.getDepartments),departmentController.getDepartments);
+
 router.route('/:departmentId')
 .get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
 .delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment);
@@ -80,9 +82,10 @@ module.exports = router;
  * @swagger
  * /departments/{id}:
 
- *   get:
- *     summary: Get a department
- *     description: showing a particular department.
+ *  
+ *   delete:
+ *     summary: Delete a department
+ *     description: Delete a  department by its id.
  *     tags: [Departments]
  *     security:
  *       - bearerAuth: []
@@ -95,39 +98,12 @@ module.exports = router;
  *         description: Department id
  *     responses:
  *       "200":
- *         description: OK
- *         content:
- *           application/json:
- *             schema:
- *                $ref: '#/components/schemas/Department'
+ *         description: No content
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *
- * 
- *   delete:
- *     summary:Delete a Department
- *     description:dhwijdjb
- *     tags:[Departments]
- *     security:
- *       - bearerAuth:[]
- *     parameters:
- *       - in: path
- *         name:id 
- *         required:true
- *         schema:
- *           type:string
- *         description:Department id
- *     responses:
- *       "200":
- *        description:No content
- *       "401":
- *          $ref:'#/component/responses/Unauthorized'
- *       "403":
- *          $ref:#/components/responses/Forbidden'
- *       "404":
- *          $ref:'#/components/responses/NotFound
+ *  
  */

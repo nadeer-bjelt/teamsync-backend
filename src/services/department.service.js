@@ -37,8 +37,26 @@ const getDepartmentById = async (id) => {
   return Department.findById(id);
 };
 
+/**
+ * get departments
+ * @param {Object} filter 
+ * @param {Object} options
+ * @param {string} [options.sortBy]
+ * @param {number} [options.limit]
+ * @param {number} [option.page]
+ * @returns {Promise<QueryResult>}
+ * 
+ * 
+ */
+const queryDepartments=async (filter,options)=>{
+  const departments=await Department.paginate(filter,options)
+  return departments
+}
+
+
 module.exports = {
   createDepartment,
   getDepartmentById,
-  deleteDepartmentById
+  deleteDepartmentById,
+  queryDepartments
 };
