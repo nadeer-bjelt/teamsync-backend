@@ -7,9 +7,9 @@ const departmentController = require('../../controllers/department.controller');
 const router = express.Router();
 
 router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment);
-router.route('/:departmentId').delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment)
-
-router.route('/:departmentId').get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById);
+router.route('/:departmentId')
+.get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
+.delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment);
 
 module.exports = router;
 
@@ -24,7 +24,7 @@ module.exports = router;
  * @swagger
  * /departments:
  *   post:
- *     summary: Create a new department
+ *     summary: Create a new one
  *     description: Only admins can create new department.
  *     tags: [Departments]
  *     security:
@@ -79,7 +79,7 @@ module.exports = router;
 /**
  * @swagger
  * /departments/{id}:
- *
+
  *   get:
  *     summary: Get a department
  *     description: showing a particular department.
@@ -120,7 +120,7 @@ module.exports = router;
  *         required:true
  *         schema:
  *           type:string
- *         description:department id
+ *         description:Department id
  *     responses:
  *       "200":
  *        description:No content
