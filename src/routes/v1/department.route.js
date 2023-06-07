@@ -6,7 +6,11 @@ const departmentController = require('../../controllers/department.controller');
 
 const router = express.Router();
 
-router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment);
+router
+  .route('/')
+  .post(validate(departmentValidation.createDepartment), departmentController.createDepartment)
+  .get(validate(departmentValidation.getDepartments), departmentController.getDepartments);
+
 router
   .route('/:departmentId')
   .get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
