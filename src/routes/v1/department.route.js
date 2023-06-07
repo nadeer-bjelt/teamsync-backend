@@ -10,7 +10,8 @@ router.route('/').post(validate(departmentValidation.createDepartment), departme
 router
   .route('/:departmentId')
   .get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
-  .delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment);
+  .delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment)
+  .patch(validate(departmentValidation.updateDepartment), departmentController.UpdateDepartment);
 
 module.exports = router;
 
