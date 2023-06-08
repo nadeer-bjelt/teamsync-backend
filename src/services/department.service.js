@@ -8,7 +8,7 @@ const ApiError = require('../utils/ApiError');
  * @returns {Promise<Department>}
  */
 const createDepartment = async (departmentBody) => {
-  console.log(departmentBody);
+  // console.log(departmentBody);
   return Department.create(departmentBody);
 };
 
