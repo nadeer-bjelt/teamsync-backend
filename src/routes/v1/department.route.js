@@ -6,12 +6,16 @@ const departmentController = require('../../controllers/department.controller');
 
 const router = express.Router();
 
-router.route('/').post(validate(departmentValidation.createDepartment), departmentController.createDepartment)
-.get(validate(departmentValidation.getDepartments),departmentController.getDepartments);
+router
+  .route('/')
+  .post(validate(departmentValidation.createDepartment), departmentController.createDepartment)
+  .get(validate(departmentValidation.getDepartments), departmentController.getDepartments);
 
-router.route('/:departmentId')
-.get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
-.delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment);
+router
+  .route('/:departmentId')
+  .get(validate(departmentValidation.getDepartmentById), departmentController.getDepartmentById)
+  .delete(validate(departmentValidation.deleteDepartment), departmentController.deleteDepartment)
+  .patch(validate(departmentValidation.updateDepartment), departmentController.UpdateDepartment);
 
 module.exports = router;
 
@@ -72,20 +76,18 @@ module.exports = router;
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
  *         $ref: '#/components/responses/Forbidden'
- * 
- * 
- *  
+ *
+ *
+ *
  */
-
 
 /**
  * @swagger
  * /departments/{id}:
 
- *  
- *   delete:
- *     summary: Delete a department
- *     description: Delete a  department by its id.
+ *   get:
+ *     summary: Get a department
+ *     description: showing a particular department.
  *     tags: [Departments]
  *     security:
  *       - bearerAuth: []
@@ -105,5 +107,28 @@ module.exports = router;
  *         $ref: '#/components/responses/Forbidden'
  *       "404":
  *         $ref: '#/components/responses/NotFound'
- *  
+ *
+ * 
+ *   delete:
+ *     summary: Delete a Department
+ *     description: dhwijdjb
+ *     tags: [Departments]
+ *     security:
+ *       - bearerAuth:[]
+ *     parameters:
+ *       - in: path
+ *         name: id 
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Department id
+ *     responses:
+ *       "200":
+ *        description:No content
+ *       "401":
+ *          $ref:'#/component/responses/Unauthorized'
+ *       "403":
+ *          $ref:#/components/responses/Forbidden'
+ *       "404":
+ *          $ref:'#/components/responses/NotFound
  */

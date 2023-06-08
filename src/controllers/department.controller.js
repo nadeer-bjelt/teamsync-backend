@@ -10,10 +10,9 @@ const createDepartment = catchAsync(async (req, res) => {
 });
 
 const deleteDepartment = catchAsync(async (req, res) => {
-  await departmentService.deleteDepartmentById(req.params.departmentId)
-  res.status(httpStatus.NO_CONTENT).send('department deleted');
-})
-
+  await departmentService.deleteDepartmentById(req.params.departmentId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
 
 const getDepartmentById = catchAsync(async (req, res) => {
   const department = await departmentService.getDepartmentById(req.params.departmentId);
@@ -23,15 +22,21 @@ const getDepartmentById = catchAsync(async (req, res) => {
   res.send(department);
 });
 
-const getDepartments=catchAsync(async(req,res)=>{
-  const filter=pick(req.query,['name']);
-  const options=pick(req.query,['sortBy','limit','page']);
-  const result=await departmentService.queryDepartments(filter,options);
-  res.send(result)
-})
+const UpdateDepartment = catchAsync(async (req, res) => {
+  const department = await departmentService.updateDepartment(req.params.departmentId, req.body);
+  res.send(department);
+});
+
+const getDepartments = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['name']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await departmentService.queryDepartments(filter, options);
+  res.send(result);
+});
 module.exports = {
   createDepartment,
   getDepartmentById,
   deleteDepartment,
-  getDepartments
+  UpdateDepartment,
+  getDepartments,
 };

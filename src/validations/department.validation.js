@@ -12,32 +12,41 @@ const createDepartment = {
   }),
 };
 
-
-const deleteDepartment={
-  params:Joi.object().keys({
-    departmentId:Joi.string().custom(objectId)
-  })
-}
-
-const getDepartmentById = {
-  body: Joi.object().keys({
+const deleteDepartment = {
+  params: Joi.object().keys({
     departmentId: Joi.string().custom(objectId),
   }),
 };
 
-const getDepartments={
-  query:Joi.object().keys({
-     name:Joi.string(),
-     description:Joi.string(),
-     sortBy:Joi.string(),
-     limit:Joi.number().integer(),
-     page:Joi.number().integer()
+const getDepartmentById = {
+  params: Joi.object().keys({
+    departmentId: Joi.string().custom(objectId),
+  }),
+};
 
-  })
+const updateDepartment = {
+  params: Joi.object().keys({
+    departmentId: Joi.string().custom(objectId),
+  }),
+  body: Joi.object().keys({
+    name: Joi.string(),
+    description: Joi.string(),
+  }),
+};
+
+const getDepartments = {
+  query: Joi.object().keys({
+    name: Joi.string(),
+    description: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
 };
 module.exports = {
   createDepartment,
   getDepartmentById,
   deleteDepartment,
-  getDepartments
+  updateDepartment,
+  getDepartments,
 };
