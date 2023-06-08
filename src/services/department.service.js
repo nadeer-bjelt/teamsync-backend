@@ -46,8 +46,7 @@ const updateDepartment = async (departmentId, updateBody) => {
   if (!department) {
     throw new ApiError(httpStatus.NOT_FOUND, 'Department not Found');
   }
-  Object.assign(department, updateBody);
-  await department.save();
+  await Department.findByIdAndUpdate(departmentId, { ...updateBody }, { new: true });
   return department;
 };
 
