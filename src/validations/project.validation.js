@@ -17,6 +17,12 @@ const createProject = {
   }),
 };
 
+const getParticularProject = {
+  params: Joi.object().keys({
+    projectId: Joi.string().custom(objectId),
+  }),
+};
 module.exports = {
   createProject,
+  getParticularProject,
 };

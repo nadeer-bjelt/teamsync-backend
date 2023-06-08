@@ -8,6 +8,8 @@ const router = express.Router();
 
 router.route('/').post(validate(projectValidation.createProject), projectController.createProject);
 
+router.route('/:projectId').get(validate(projectValidation.getParticularProject), projectController.getParticularProject);
+
 module.exports = router;
 
 /**

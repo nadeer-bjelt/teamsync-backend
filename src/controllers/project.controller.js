@@ -9,6 +9,11 @@ const createProject = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(project);
 });
 
+const getParticularProject = catchAsync(async (req, res) => {
+  const project = await projectService.getParticularProject(req.params.projectId);
+  res.status(httpStatus.FOUND).send(project);
+});
 module.exports = {
   createProject,
+  getParticularProject,
 };
