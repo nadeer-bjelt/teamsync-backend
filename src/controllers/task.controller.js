@@ -22,8 +22,18 @@ const getAllTasks = catchAsync(async (req, res) => {
   const result = await taskService.getAllTasks(filter, options);
   res.send(result);
 });
+const updateTask = catchAsync(async (req, res) => {
+  const task = await taskService.updateTask(req.params.taskId, req.body);
+  res.send(task);
+});
+const deleteTask = catchAsync(async (req, res) => {
+  await taskService.deleteTask(req.params.taskId);
+  res.status(httpStatus.NO_CONTENT).send();
+});
 module.exports = {
   createTask,
   getTaskById,
   getAllTasks,
+  updateTask,
+  deleteTask,
 };

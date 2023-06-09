@@ -32,8 +32,24 @@ const getAllTasks = {
     page: Joi.number().integer(),
   }),
 };
+const updateTask = {
+  params: Joi.object().keys({
+    taskId: Joi.string().custom(objectId),
+  }),
+  body: Joi.object().keys({
+    title: Joi.string(),
+    description: Joi.string(),
+  }),
+};
+const deleteTask = {
+  params: Joi.object().keys({
+    taskId: Joi.string().custom(objectId),
+  }),
+};
 module.exports = {
   createTask,
   getTaskById,
   getAllTasks,
+  updateTask,
+  deleteTask,
 };

@@ -10,5 +10,9 @@ router
   .post(validate(taskValidation.createTask), taskController.createTask)
   .get(validate(taskValidation.getAllTasks), taskController.getAllTasks);
 
-router.route('/:taskId').get(validate(taskValidation.getTaskById), taskController.getTaskById);
+router
+  .route('/:taskId')
+  .get(validate(taskValidation.getTaskById), taskController.getTaskById)
+  .patch(validate(taskValidation.updateTask), taskController.updateTask)
+  .delete(validate(taskValidation.deleteTask), taskController.deleteTask);
 module.exports = router;
