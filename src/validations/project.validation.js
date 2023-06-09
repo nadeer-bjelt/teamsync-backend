@@ -22,7 +22,17 @@ const getParticularProject = {
     projectId: Joi.string().custom(objectId),
   }),
 };
+
+const getAllProjects = {
+  query: Joi.object().keys({
+    title: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+};
 module.exports = {
   createProject,
   getParticularProject,
+  getAllProjects,
 };

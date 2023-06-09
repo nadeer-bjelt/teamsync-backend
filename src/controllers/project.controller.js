@@ -13,7 +13,16 @@ const getParticularProject = catchAsync(async (req, res) => {
   const project = await projectService.getParticularProject(req.params.projectId);
   res.status(httpStatus.FOUND).send(project);
 });
+
+const getAllProjects = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['title']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const project = await projectService.getAllProjects(filter, options);
+  res.send(project);
+});
+
 module.exports = {
   createProject,
   getParticularProject,
+  getAllProjects,
 };
