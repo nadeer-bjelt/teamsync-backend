@@ -14,7 +14,8 @@ router
 router
   .route('/:projectId')
   .get(validate(projectValidation.getParticularProject), projectController.getParticularProject)
-  .patch(validate(projectValidation.updateProject), projectController.updateProject);
+  .patch(validate(projectValidation.updateProject), projectController.updateProject)
+  .delete(validate(projectValidation.deleteProject), projectController.deleteProject);
 
 module.exports = router;
 

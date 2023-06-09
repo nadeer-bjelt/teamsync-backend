@@ -25,9 +25,16 @@ const updateProject = catchAsync(async (req, res) => {
   const project = await projectService.updateProject(req.params.projectId, req.body);
   res.send(project);
 });
+
+const deleteProject = catchAsync(async (req, res) => {
+  const project = await projectService.deleteProject(req.params.projectId);
+  res.status(httpStatus.GONE).send('deleted');
+});
+
 module.exports = {
   createProject,
   getParticularProject,
   getAllProjects,
   updateProject,
+  deleteProject,
 };

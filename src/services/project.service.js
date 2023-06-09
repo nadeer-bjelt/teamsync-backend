@@ -54,9 +54,25 @@ const updateProject = async (projectId, projectBody) => {
   return project;
 };
 
+/**
+ * delete project by
+ * @param {ObjectId} projectId
+ * @returns {Promise<Project>}
+ */
+const deleteProject = async (projectId) => {
+  const project = await getParticularProject(projectId);
+  if (!project) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'project not found to delete');
+  }
+  await Project.findByIdAndDelete(projectId);
+  await Department.findByIdAndUpdate(project.departmentId, { $pull: { projects: project._id } }, { new: true });
+  return project;
+};
+
 module.exports = {
   createProject,
   getParticularProject,
   getAllProjects,
   updateProject,
+  deleteProject,
 };

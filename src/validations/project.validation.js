@@ -50,9 +50,16 @@ const updateProject = {
     attachments: Joi.array(),
   }),
 };
+
+const deleteProject = {
+  params: Joi.object().keys({
+    projectId: Joi.string().custom(objectId),
+  }),
+};
 module.exports = {
   createProject,
   getParticularProject,
   getAllProjects,
   updateProject,
+  deleteProject,
 };
