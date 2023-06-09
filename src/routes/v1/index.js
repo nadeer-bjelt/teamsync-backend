@@ -3,11 +3,8 @@ const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const departmentRoute = require('./department.route');
-<<<<<<< HEAD
 const taskRoute = require('./task.route');
-=======
 const projectRoute = require('./project.route');
->>>>>>> e26ed0f8dfe97cb248ba7748571de1fcd5507e92
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -26,13 +23,12 @@ const defaultRoutes = [
     route: departmentRoute,
   },
   {
-<<<<<<< HEAD
     path: '/tasks',
     route: taskRoute,
-=======
+  },
+  {
     path: '/projects',
     route: projectRoute,
->>>>>>> e26ed0f8dfe97cb248ba7748571de1fcd5507e92
   },
 ];
 

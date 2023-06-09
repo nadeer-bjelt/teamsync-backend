@@ -1,5 +1,5 @@
-const httpStatus = require('http-status');
-const { Task } = require('../models');
+// const httpStatus = require('http-status');
+const { Task, Project } = require('../models');
 
 /**
  * create new task
@@ -8,7 +8,10 @@ const { Task } = require('../models');
  */
 
 const createTask = async (taskBody) => {
-  return Task.create(taskBody);
+  const newTask = await Task.create(taskBody);
+  await Project.findByIdAndUpdate(newTask.projectId, { $push: { tasks: newTask._id } }, { new: true });
+  console.log(newTask);
+  return newTask;
 };
 /**
  * get task by its Id
