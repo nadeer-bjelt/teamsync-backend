@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const { objectId } = require('./custom.validation');
 
 const createTask = {
   body: Joi.object().keys({
@@ -18,6 +19,21 @@ const createTask = {
     comments: Joi.array(),
   }),
 };
+const getTaskById = {
+  params: Joi.object().keys({
+    taskId: Joi.string().custom(objectId),
+  }),
+};
+const getAllTasks = {
+  query: Joi.object().keys({
+    title: Joi.string(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+};
 module.exports = {
   createTask,
+  getTaskById,
+  getAllTasks,
 };

@@ -21,7 +21,21 @@ const createTask = async (taskBody) => {
 const getTaskById = async (taskId) => {
   return Task.findById(taskId);
 };
+/**
+ *
+ * @param {Object} filter
+ * @param {Object} options
+ * @param {String} [options.sortBy]
+ * @param {number} [options.limit]
+ * @param {number} [options.page]
+ * @returns {Promise<getAllTasks>}
+ */
+const getAllTasks = async (filter, options) => {
+  const tasks = await Task.paginate(filter, options);
+  return tasks;
+};
 module.exports = {
   createTask,
   getTaskById,
+  getAllTasks,
 };
