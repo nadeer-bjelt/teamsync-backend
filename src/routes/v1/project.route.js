@@ -11,7 +11,10 @@ router
   .post(validate(projectValidation.createProject), projectController.createProject)
   .get(validate(projectValidation.getAllProjects), projectController.getAllProjects);
 
-router.route('/:projectId').get(validate(projectValidation.getParticularProject), projectController.getParticularProject);
+router
+  .route('/:projectId')
+  .get(validate(projectValidation.getParticularProject), projectController.getParticularProject)
+  .patch(validate(projectValidation.updateProject), projectController.updateProject);
 
 module.exports = router;
 

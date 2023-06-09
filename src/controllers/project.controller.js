@@ -21,8 +21,13 @@ const getAllProjects = catchAsync(async (req, res) => {
   res.send(project);
 });
 
+const updateProject = catchAsync(async (req, res) => {
+  const project = await projectService.updateProject(req.params.projectId, req.body);
+  res.send(project);
+});
 module.exports = {
   createProject,
   getParticularProject,
   getAllProjects,
+  updateProject,
 };

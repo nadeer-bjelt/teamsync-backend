@@ -26,20 +26,37 @@ const getParticularProject = async (projectId) => {
 };
 
 /**
- * get all departments
+ * get all Projects
  * @param {object} filter
  * @param {object} options
  * @param {object} [options.sortBy]
  * @param {object} [option.limit]
  * @param {object} [options.page]
+ * @returns {Promise<Project>}
  */
 const getAllProjects = async (filter, options) => {
   const projects = await Project.paginate(filter, options);
   return projects;
 };
 
+/**
+ * update a particular project
+ * @param {ObjectId} projectId
+ * @param {object} projectBody
+ * @returns {Promise<Project>}
+ */
+const updateProject = async (projectId, projectBody) => {
+  const project = await getParticularProject(projectId);
+  if (!project) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Project not Found');
+  }
+  await Project.findByIdAndUpdate(projectId, { ...projectBody }, { new: true });
+  return project;
+};
+
 module.exports = {
   createProject,
   getParticularProject,
   getAllProjects,
+  updateProject,
 };
