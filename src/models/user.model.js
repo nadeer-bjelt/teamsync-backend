@@ -16,11 +16,6 @@ const userSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    address: {
-      type: String,
-      required: true,
-      trim: true,
-    },
     email: {
       type: String,
       required: true,
@@ -44,6 +39,11 @@ const userSchema = mongoose.Schema(
         }
       },
       private: true, // used by the toJSON plugin
+    },
+    department: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Department',
+      required: true,
     },
     role: {
       type: String,
