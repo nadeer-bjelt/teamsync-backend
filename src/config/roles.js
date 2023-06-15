@@ -5,7 +5,7 @@ const allRoles = {
   businessManager: [],
   dmManger: [],
   salesManager: [],
-  itEmployee: [],
+  itMember: [],
   dmEmployee: [],
   salesEmployee: [],
   hr: [],
