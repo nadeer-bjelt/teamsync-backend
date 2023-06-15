@@ -21,7 +21,8 @@ const createProject = async (projectBody) => {
  * @returns {Promise<Project>}
  */
 const getParticularProject = async (projectId) => {
-  return await Project.findById(projectId);
+  const result = await Project.findById(projectId);
+  return result;
 };
 
 /**
