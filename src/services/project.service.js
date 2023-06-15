@@ -24,7 +24,19 @@ const getParticularProject = async (projectId) => {
   return await Project.findById(projectId);
 };
 
+/**
+ * get a project by department id
+ * @param {ObjectId} departmentId
+ * @returns {Promise<Project>}
+ */
+const getProjectByDepartmentId = async (departmentId) => {
+  console.log(departmentId);
+  const result = await Project.find({ departmentId });
+  console.log(result);
+  return result;
+};
 module.exports = {
   createProject,
   getParticularProject,
+  getProjectByDepartmentId,
 };

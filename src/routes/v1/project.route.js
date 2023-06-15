@@ -10,6 +10,9 @@ router.route('/').post(validate(projectValidation.createProject), projectControl
 
 router.route('/:projectId').get(validate(projectValidation.getParticularProject), projectController.getParticularProject);
 
+router
+  .route('/department/:departmentId')
+  .get(validate(projectValidation.getProjectByDepartmentId), projectController.getProjectByDepartmentId);
 module.exports = router;
 
 /**

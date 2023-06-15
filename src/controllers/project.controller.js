@@ -13,7 +13,13 @@ const getParticularProject = catchAsync(async (req, res) => {
   const project = await projectService.getParticularProject(req.params.projectId);
   res.status(httpStatus.FOUND).send(project);
 });
+const getProjectByDepartmentId = catchAsync(async (req, res) => {
+  const project = await projectService.getProjectByDepartmentId(req.params.departmentId);
+  console.log(project);
+  res.status(httpStatus.FOUND).send(project);
+});
 module.exports = {
   createProject,
   getParticularProject,
+  getProjectByDepartmentId,
 };

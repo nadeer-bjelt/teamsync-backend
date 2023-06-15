@@ -22,7 +22,13 @@ const getParticularProject = {
     projectId: Joi.string().custom(objectId),
   }),
 };
+const getProjectByDepartmentId = {
+  params: Joi.object().keys({
+    departmentId: Joi.string().custom(objectId),
+  }),
+};
 module.exports = {
   createProject,
   getParticularProject,
+  getProjectByDepartmentId,
 };
