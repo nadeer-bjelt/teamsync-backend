@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const { Project, Department } = require('../models');
 const ApiError = require('../utils/ApiError');
 const { departmentService } = require('../services');
+const { options } = require('joi');
 
 /**
  * Create a new Project
@@ -24,7 +25,54 @@ const getParticularProject = async (projectId) => {
   return await Project.findById(projectId);
 };
 
+/**
+ * get all Projects
+ * @param {object} filter
+ * @param {object} options
+ * @param {object} [options.sortBy]
+ * @param {object} [option.limit]
+ * @param {object} [options.page]
+ * @returns {Promise<Project>}
+ */
+const getAllProjects = async (filter, options) => {
+  const projects = await Project.paginate(filter, options);
+  return projects;
+};
+
+/**
+ * update a particular project
+ * @param {ObjectId} projectId
+ * @param {object} projectBody
+ * @returns {Promise<Project>}
+ */
+const updateProject = async (projectId, projectBody) => {
+  const project = await getParticularProject(projectId);
+  if (!project) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'Project not Found');
+  }
+  await Project.findByIdAndUpdate(projectId, { ...projectBody }, { new: true });
+  return project;
+};
+
+/**
+ * delete project by
+ * @param {ObjectId} projectId
+ * @returns {Promise<Project>}
+ */
+const deleteProject = async (projectId) => {
+  const project = await getParticularProject(projectId);
+  if (!project) {
+    throw new ApiError(httpStatus.NOT_FOUND, 'project not found to delete');
+  }
+  await Project.findByIdAndDelete(projectId);
+  await Department.findByIdAndUpdate(project.departmentId, { $pull: { projects: project._id } }, { new: true });
+  return project;
+};
+
 module.exports = {
   createProject,
   getParticularProject,
+  getAllProjects,
+  updateProject,
+  deleteProject,
 };

@@ -6,9 +6,16 @@ const projectController = require('../../controllers/project.controller');
 
 const router = express.Router();
 
-router.route('/').post(validate(projectValidation.createProject), projectController.createProject);
+router
+  .route('/')
+  .post(validate(projectValidation.createProject), projectController.createProject)
+  .get(validate(projectValidation.getAllProjects), projectController.getAllProjects);
 
-router.route('/:projectId').get(validate(projectValidation.getParticularProject), projectController.getParticularProject);
+router
+  .route('/:projectId')
+  .get(validate(projectValidation.getParticularProject), projectController.getParticularProject)
+  .patch(validate(projectValidation.updateProject), projectController.updateProject)
+  .delete(validate(projectValidation.deleteProject), projectController.deleteProject);
 
 module.exports = router;
 
