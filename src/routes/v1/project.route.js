@@ -1,5 +1,5 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
+// const auth = require('../../middlewares/auth');
 const validate = require('../../middlewares/validate');
 const projectValidation = require('../../validations/project.validation');
 const projectController = require('../../controllers/project.controller');
@@ -7,6 +7,8 @@ const projectController = require('../../controllers/project.controller');
 const router = express.Router();
 
 router.route('/').post(validate(projectValidation.createProject), projectController.createProject);
+
+router.route('/:projectId').get(validate(projectValidation.getParticularProject), projectController.getParticularProject);
 
 module.exports = router;
 

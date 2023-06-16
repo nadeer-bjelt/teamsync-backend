@@ -3,6 +3,7 @@ const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
 const departmentRoute = require('./department.route');
+const taskRoute = require('./task.route');
 const projectRoute = require('./project.route');
 const config = require('../../config/config');
 
@@ -20,6 +21,10 @@ const defaultRoutes = [
   {
     path: '/departments',
     route: departmentRoute,
+  },
+  {
+    path: '/tasks',
+    route: taskRoute,
   },
   {
     path: '/projects',

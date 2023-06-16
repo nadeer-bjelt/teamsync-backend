@@ -10,7 +10,7 @@ const { departmentService } = require('../services');
  */
 const createProject = async (projectBody) => {
   const newProject = await Project.create(projectBody);
-  await Department.findByIdAndUpdate(projectBody.departmentId, { $push: { projects: newProject._id } }, { new: true });
+  await Department.findByIdAndUpdate(newProject.departmentId, { $push: { projects: newProject._id } }, { new: true });
   console.log('newProject', newProject);
   return newProject;
 };
