@@ -18,7 +18,21 @@ const getProjectByDepartmentId = catchAsync(async (req, res) => {
   console.log(project);
   res.status(httpStatus.FOUND).send(project);
 });
+
+const updateProject = catchAsync(async (req, res) => {
+  console.log('hi');
+  const project = await projectService.updateProject(req.params.projectId, req.body);
+  res.send(project);
+});
+
+const deleteProject = catchAsync(async (req, res) => {
+  const project = await projectService.deleteProject(req.params.projectId);
+  res.status(httpStatus.GONE).send('deleted');
+});
+
 module.exports = {
+  updateProject,
+  deleteProject,
   createProject,
   getParticularProject,
   getProjectByDepartmentId,
