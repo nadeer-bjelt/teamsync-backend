@@ -9,18 +9,24 @@ const createProject = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(project);
 });
 
+const getAllProjects = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['title']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const project = await projectService.getAllProjects(filter, options);
+  res.send(project);
+});
 const getParticularProject = catchAsync(async (req, res) => {
   const project = await projectService.getParticularProject(req.params.projectId);
   res.status(httpStatus.FOUND).send(project);
 });
 const getProjectByDepartmentId = catchAsync(async (req, res) => {
   const project = await projectService.getProjectByDepartmentId(req.params.departmentId);
-  console.log(project);
+  // console.log(project);
   res.status(httpStatus.FOUND).send(project);
 });
 
 const updateProject = catchAsync(async (req, res) => {
-  console.log('hi');
+  // console.log('hi');
   const project = await projectService.updateProject(req.params.projectId, req.body);
   res.send(project);
 });
@@ -36,4 +42,5 @@ module.exports = {
   createProject,
   getParticularProject,
   getProjectByDepartmentId,
+  getAllProjects,
 };
