@@ -6,6 +6,7 @@ const pick = require('../utils/pick');
 
 const createTask = catchAsync(async (req, res) => {
   const task = await taskService.createTask(req.body);
+  console.log('res');
   res.status(httpStatus.CREATED).send(task);
 });
 
