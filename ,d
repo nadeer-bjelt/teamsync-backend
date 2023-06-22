@@ -1,0 +1,176 @@
+[33mcommit 84cfc0299c4f233b78776c16b2f8074a60354439[m[33m ([m[1;36mHEAD -> [m[1;32mnibin[m[33m, [m[1;31morigin/nibin[m[33m)[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Thu Jun 15 17:46:34 2023 +0530
+
+    New changes
+
+[33mcommit 73dab9b33293b0c3d26ddab7ac67a3228cdbf34b[m
+Merge: e586237 3c360fe
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Thu Jun 15 09:53:44 2023 +0530
+
+    Merge branch 'dev' of https://github.com/nadeer-bjelt/teamsync-backend into nibin
+
+[33mcommit 3c360fe5cf19c04ddb3683a18fea3926e67388b2[m[33m ([m[1;31morigin/dev[m[33m)[m
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Thu Jun 15 09:52:57 2023 +0530
+
+    New changes
+
+[33mcommit 547ea9e743f0431e0b1546ca995c9794a7a62813[m
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Sun Jun 11 20:09:54 2023 +0530
+
+    new changes
+
+[33mcommit e586237ca4cf2e8f4d46bf8224f495b19f87f7eb[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Fri Jun 9 13:10:51 2023 +0530
+
+    delete particular project
+
+[33mcommit eef2577558cd7896cfc983b0d05ddd5a9120e325[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Fri Jun 9 11:09:05 2023 +0530
+
+    update project
+
+[33mcommit 407e1632a92546dcc14d1cb01baed314a970934f[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Fri Jun 9 09:29:46 2023 +0530
+
+    get all Projects
+
+[33mcommit 97009477be7d29d17a84f9ddd8de567ad6202e4b[m
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Fri Jun 9 09:29:34 2023 +0530
+
+    Added build command
+
+[33mcommit e26ed0f8dfe97cb248ba7748571de1fcd5507e92[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Thu Jun 8 23:12:56 2023 +0530
+
+    get particular project
+
+[33mcommit 5205e85b94643ed6d31935fcb4753b9e70cf2659[m
+Merge: dd081ae a9a5a54
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Thu Jun 8 22:12:05 2023 +0530
+
+    Merge branch 'main' of https://github.com/nadeer-bjelt/teamsync-backend
+
+[33mcommit dd081aeb5fa0d329ca0cf9412994b52093327ad3[m
+Merge: 64bbf9b 78147c4
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Thu Jun 8 22:11:16 2023 +0530
+
+    Merge branch 'nibin' of https://github.com/nadeer-bjelt/teamsync-backend
+
+[33mcommit 64bbf9b84812fa85f3c6af837e1341fab5f5bec9[m
+Merge: e6c5179 5d8c800
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Thu Jun 8 22:10:43 2023 +0530
+
+    Merge branch 'anagha' of https://github.com/nadeer-bjelt/teamsync-backend
+
+[33mcommit 78147c41e9397c6351428452c829d0d76f0df78d[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Thu Jun 8 17:39:04 2023 +0530
+
+    create project
+
+[33mcommit 91dbe16ad105a9ac2cde3fa4e7c9ca088a8e209e[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Wed Jun 7 23:23:05 2023 +0530
+
+    update department and get department mergin2
+
+[33mcommit 1c95d34902fb0779fdb29ec1be65ec3ce8239beb[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Wed Jun 7 23:11:07 2023 +0530
+
+    mergin updatedepartments with getDepartments
+
+[33mcommit e8b8471b36cbd23387400925215b175b5175d91b[m
+Merge: d03ef68 5d8c800
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Wed Jun 7 22:43:05 2023 +0530
+
+    Merge branch 'anagha' of https://github.com/nadeer-bjelt/teamsync-backend into nibin
+
+[33mcommit a9a5a540050d4dfedf002aaf7fb5c739c841b7f0[m
+Merge: e6c5179 d03ef68
+Author: Nibinh <112748229+Nibinh@users.noreply.github.com>
+Date:   Wed Jun 7 22:40:00 2023 +0530
+
+    Merge pull request #1 from nadeer-bjelt/nibin
+    
+    Nibin
+
+[33mcommit d03ef68836508c9a1d56b264c9759e00ae63e3c3[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Wed Jun 7 17:15:37 2023 +0530
+
+    update Department
+
+[33mcommit 5d8c800799e75e9f5a54b56e4cb4bea8d0c37d36[m[33m ([m[1;31morigin/anagha[m[33m)[m
+Author: Anagha <anaghapp2309@gmail.com>
+Date:   Wed Jun 7 17:09:08 2023 +0530
+
+    query departments
+
+[33mcommit a120aa357a7e66fb1b9bb4d4ddf6ffbdc0f22184[m
+Author: Anagha <anaghapp2309@gmail.com>
+Date:   Wed Jun 7 10:44:52 2023 +0530
+
+    delete Department
+
+[33mcommit 213925b5268245505dc5227f5ed40d3ae2196562[m
+Merge: f37bcba be7cf2f
+Author: Anagha <anaghapp2309@gmail.com>
+Date:   Wed Jun 7 09:57:34 2023 +0530
+
+    Merge branch 'nibin' of https://github.com/nadeer-bjelt/teamsync-backend into anagha
+
+[33mcommit f37bcbafa160bc912145f1e7d5c8c509bced0e1e[m
+Author: Anagha <anaghapp2309@gmail.com>
+Date:   Wed Jun 7 00:46:14 2023 +0530
+
+    delete department added
+
+[33mcommit e6c5179a4030ddac55a96ceac1fd95f0cb49cfb8[m
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Tue Jun 6 22:06:06 2023 +0530
+
+    Added vercel.json file
+
+[33mcommit be7cf2f5f2a731cdb02660f09b9e239cbbceca22[m[33m ([m[1;32mnibin2[m[33m)[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Tue Jun 6 21:57:43 2023 +0530
+
+    Department get method
+
+[33mcommit f6a739921875768094598d0ce28389d3ed24dafa[m
+Author: Nibinh <haridasnibin@gmail.com>
+Date:   Tue Jun 6 12:38:07 2023 +0530
+
+    changes from nibin
+
+[33mcommit 9a78a76a5712be876879ea324145e331d1af4a51[m
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Fri Jun 2 17:36:24 2023 +0530
+
+    Create new schemas
+
+[33mcommit db73562d0ffa2289c4676b95d2c3d4702b34eeb2[m
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Fri Jun 2 11:22:35 2023 +0530
+
+    Removed dev env from git ignore
+
+[33mcommit 8b94a6457bb89e859d288249c11387df9dd86583[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Muhammed Nadeer <muhammed.nadeer@b-jelt.com>
+Date:   Fri Jun 2 10:51:45 2023 +0530
+
+    first commit
