@@ -9,6 +9,19 @@ const createUser = {
     lastName: Joi.string().required(),
     role: Joi.string().required().valid('user', 'admin', 'itMember', 'itManager'),
     department: Joi.string().custom(objectId),
+    isEmailVerified: Joi.boolean(),
+    year: Joi.number().required(),
+    totalLeaves: Joi.number(),
+    casualLeaves: Joi.number(),
+    sickLeaves: Joi.number(),
+    balanceLeaves: Joi.number(),
+    leavesTaken: Joi.array().items(
+      Joi.object({
+        date: Joi.date().required(),
+        leaveType: Joi.string().required(),
+        duration: Joi.number(),
+      })
+    ),
   }),
 };
 

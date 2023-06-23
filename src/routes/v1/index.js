@@ -6,6 +6,7 @@ const departmentRoute = require('./department.route');
 const taskRoute = require('./task.route');
 const projectRoute = require('./project.route');
 const config = require('../../config/config');
+const leaveRoute = require('./leave.route');
 
 const router = express.Router();
 
@@ -29,6 +30,10 @@ const defaultRoutes = [
   {
     path: '/projects',
     route: projectRoute,
+  },
+  {
+    path: '/leave',
+    route: leaveRoute,
   },
 ];
 

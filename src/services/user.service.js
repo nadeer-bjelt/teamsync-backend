@@ -1,5 +1,5 @@
 const httpStatus = require('http-status');
-const { User } = require('../models');
+const { User, Leave } = require('../models');
 const ApiError = require('../utils/ApiError');
 
 /**
@@ -11,7 +11,31 @@ const createUser = async (userBody) => {
   if (await User.isEmailTaken(userBody.email)) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Email already taken');
   }
-  return User.create(userBody);
+  const userData = {
+    email: userBody.email,
+    firstName: userBody.firstName,
+    lastName: userBody.lastName,
+    password: userBody.password,
+    department: userBody.department,
+    role: userBody.role,
+    isEmailVerified: userBody.isEmailVerified,
+  };
+  const leaveData = {
+    user: userBody.user,
+    year: userBody.year,
+    totalLeaves: userBody.totalLeaves,
+    casualLeaves: userBody.casualLeaves,
+    sickLeaves: userBody.sickLeaves,
+    balanceLeaves: userBody.balanceLeaves,
+    leavesTaken: userBody.leavesTaken,
+  };
+  const newUser = await User.create(userData);
+  const leave = await Leave.create({ ...leaveData, user: newUser._id });
+
+  return {
+    newUser,
+    leave,
+  };
 };
 
 /**

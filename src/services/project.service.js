@@ -1,7 +1,7 @@
 const httpStatus = require('http-status');
 const { Project, Department } = require('../models');
 const ApiError = require('../utils/ApiError');
-const { departmentService } = require('../services');
+// const { departmentService } = require('../services');
 
 /**
  * Create a new Project
@@ -31,7 +31,7 @@ const getParticularProject = async (projectId) => {
  * @returns {Promise<Project>}
  */
 const getProjectByDepartmentId = async (departmentId) => {
-  // console.log(departmentId);
+  // console.log("dep",departmentId);
   const result = await Project.find({ departmentId });
   // console.log(result);
   return result;
