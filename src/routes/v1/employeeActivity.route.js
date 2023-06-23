@@ -7,7 +7,8 @@ const router = express.Router();
 
 router
   .route('/')
-  .post(validate(employeeActivityValidation.createEmployeeActivity), employeeActivityController.createEmployeeActivity);
+  .post(validate(employeeActivityValidation.createEmployeeActivity), employeeActivityController.createEmployeeActivity)
+  .get(validate(employeeActivityValidation.getALLEmployeeActivity), employeeActivityController.getAllEmployeeActivity);
 
 router
   .route('/:employeeActivityId')

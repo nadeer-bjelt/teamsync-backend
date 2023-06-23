@@ -40,9 +40,20 @@ const updateEmployeeActivity = {
     attachments: Joi.array(),
   }),
 };
+
+const getALLEmployeeActivity = {
+  query: Joi.object().keys({
+    employeeId: Joi.string(),
+    date: Joi.date(),
+    sortBy: Joi.string(),
+    limit: Joi.number().integer(),
+    page: Joi.number().integer(),
+  }),
+};
 module.exports = {
   createEmployeeActivity,
   getEmployeeActivityById,
   deleteEmployeeActivityById,
   updateEmployeeActivity,
+  getALLEmployeeActivity,
 };

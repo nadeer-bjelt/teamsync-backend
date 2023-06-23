@@ -2,6 +2,7 @@ const httpStatus = require('http-status');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
 const { employeeActivityService } = require('../services');
+const pick = require('../utils/pick');
 
 const createEmployeeActivity = catchAsync(async (req, res) => {
   const employee = await employeeActivityService.createEmployeeActivity(req.body);
@@ -25,9 +26,17 @@ const updateEmployeeActivity = catchAsync(async (req, res) => {
   const result = await employeeActivityService.updateEmployeeActivity(req.params.employeeActivityId, req.body);
   res.status(httpStatus.OK).send(result);
 });
+
+const getAllEmployeeActivity = catchAsync(async (req, res) => {
+  const filter = pick(req.query, ['employeeId', 'date']);
+  const options = pick(req.query, ['sortBy', 'limit', 'page']);
+  const result = await employeeActivityService.getAllEmployeeActivity(filter, options);
+  res.send(result);
+});
 module.exports = {
   createEmployeeActivity,
   getEmployeeActivityById,
   deleteEmployeeActivityById,
   updateEmployeeActivity,
+  getAllEmployeeActivity,
 };

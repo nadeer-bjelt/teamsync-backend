@@ -1,6 +1,8 @@
 const httpStatus = require('http-status');
 const { EmployeeActivity } = require('../models');
 const ApiError = require('../utils/ApiError');
+const { filter } = require('compression');
+const { options } = require('joi');
 
 /**
  * Create a employee activity
@@ -47,11 +49,23 @@ const updateEmployeeActivity = async (employeeActivityId, updateBody) => {
 };
 
 /**
- *
+ * get all employeeActivity
+ *@param {object} filter
+ * @param {object} options
+ * @param {string} [options.sortBy]
+ * @param {number} [options.limit]
+ * @param {number} [option.page]
+ * @returns {Promise<EmployeeActivity>}
  */
+const getAllEmployeeActivity = async (filter, options) => {
+  const employee = await EmployeeActivity.paginate(filter, options);
+  return employee;
+};
+
 module.exports = {
   createEmployeeActivity,
   getEmployeeActivityById,
   deleteEmployeeActivityById,
   updateEmployeeActivity,
+  getAllEmployeeActivity,
 };
